@@ -12,4 +12,3 @@ How to use Autobackup?
 + Run AutoBackup.exe  
 
 NOTE:This software depends on the console application of Bandzip(bz.exe,ark.xxx.xxx.dll) to compress file(clips).but you can change the code to other software for compression(such as 7z.exe)
-

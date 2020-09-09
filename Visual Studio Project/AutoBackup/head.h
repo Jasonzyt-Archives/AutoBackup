@@ -52,10 +52,10 @@ int _PR(int PRtype, string text)
     }
     return 0;
 }
-string getCmdStr(string mubiaodir, string outputdir, string outputfilename)
+string getCmdStr(string outputdir, string inputdir, string outputfilename)
 {
     ostringstream v2;
-    v2 << "bz.exe c -y -fmt:zip \"" << outputdir << outputfilename <<"\" "<< mubiaodir;
+    v2 << "bz.exe c -y -r -fmt:zip \"" << outputdir << outputfilename << "\" " << "\"" << inputdir << "\" ";
     string v3 = v2.str();
     return v3;
 }

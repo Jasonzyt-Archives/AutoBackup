@@ -20,7 +20,9 @@ int main() {
 	string bt = getConfig("config.ini", "BackupTime");
 	int backuptime = StringToInt(bt);
 	int backupms = backuptime * 60 * 1000;
-	cout <<"[DEBUG]" << endl << "已读取配置:" << endl << "OutputPath=" << opp << endl << "TargetPath=" << tp << endl << "BackupTime=Every " << backuptime << " Minute(s)(Every " << backupms << " ms)" << endl;
+	string d0 = getZIPFilename();
+	string d1 = getCmdStr(tp, opp, d0);
+	cout << "[DEBUG]" << endl << "已读取配置:" << endl << "OutputPath=" << opp << endl << "TargetPath=" << tp << endl << "BackupTime=Every " << backuptime << " Minute(s)(Every " << backupms << " ms)" << endl << "Command : " << d1 << endl;
 	if (opp == "")
 	{
 		opp = "backup\\";

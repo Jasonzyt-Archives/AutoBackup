@@ -14,7 +14,7 @@ int backuptime, backupms;
 
 int main() {
 	SetConsoleTitle(L"自动备份 AutoBackup");
-	cout << "AutoBackup v1.0.0(Release x64) - Autobackup tool. Copyright (C)2020 JasonZYT" << endl;
+	cout << "AutoBackup v1.0.3(Release x64) - Autobackup tool. Copyright (C)2020 JasonZYT" << endl;
 	_PR(0, "Starting...");
 	string opp = getConfig("config.ini", "OutputPath");
 	string tp = getConfig("config.ini", "TargetPath");

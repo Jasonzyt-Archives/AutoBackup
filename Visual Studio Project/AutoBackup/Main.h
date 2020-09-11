@@ -53,22 +53,23 @@ int _PR(int PRtype, string text)
     return 0;
 }
 
-string getCmdStr()
+string getCmdStr(string p1/*OPP*/,string p2/*TP*/)
 {
     ostringstream v2;
     /*拼合字符串 根据需求修改此部分为7-Zip.exe或bandzip.exe
     *Bandzip
-        v2 << "[Bandzip目录] c -y -r -fmt:zip \"" << opp << getZIPFilename() << "\" " << "\"" << tp << "\" ";
+        v2 << "[Bandzip目录] c -y -r -fmt:zip \"" << p1 << getZIPFilename() << "\" " << "\"" << p2 << "\" ";
     *7-Zip
-        v2 << "[7-Zip目录] a \"" << opp << getZIPFilename() << "\" " << "\"" << tp << "\" -y -r";
+        v2 << "[7-Zip目录] a \"" << p1 << getZIPFilename() << "\" " << "\"" << p2 << "\" -y -r";
     */
+
     /*The splicing string is modified to 7-Zip.exe or bandzip.exe
     *Bandzip
-        v2 << "[Bandzip Folder] c -y -r -fmt:zip \"" << opp << getZIPFilename() << "\" " << "\"" << tp << "\" ";
+        v2 << "[Bandzip Folder] c -y -r -fmt:zip \"" << p1 << getZIPFilename() << "\" " << "\"" << p2 << "\" ";
     *7-Zip
-        v2 << "[7-Zip Folder] a \"" << opp << getZIPFilename() << "\" " << "\"" << tp << "\" -y -r";
+        v2 << "[7-Zip Folder] a \"" << p1 << getZIPFilename() << "\" " << "\"" << p2 << "\" -y -r";
     */
-    v2 << "bz.exe c -y -r -fmt:zip \"" << opp << getZIPFilename() << "\" " << "\"" << tp << "\" ";
+    v2 << "bz.exe c -y -r -fmt:zip \"" << p1 << getZIPFilename() << "\" " << "\"" << p2 << "\" ";
     string v3 = v2.str();
     return v3;
 }

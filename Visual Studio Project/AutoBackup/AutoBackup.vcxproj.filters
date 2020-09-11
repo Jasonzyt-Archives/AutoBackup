@@ -18,10 +18,10 @@
     <ClInclude Include="resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="head.h">
+    <ClInclude Include="operate_config.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="operate_config.h">
+    <ClInclude Include="Main.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

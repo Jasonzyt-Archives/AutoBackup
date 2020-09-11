@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include<string>
 #include<Windows.h>
-#include"head.h"
+#include"main.h"
 #pragma warning(disable:6001)
 #pragma warning(disable:6031)
 
@@ -22,8 +22,8 @@ int main() {
 	string bt = getConfig("config.ini", "BackupTime");
 	int backuptime = StringToInt(bt);
 	int backupms = backuptime * 60 * 1000;
-	string d0 = getCmdStr();
-	cout << "[DEBUG]" << endl << "已读取配置:" << endl << "OutputPath=" << opp << endl << "TargetPath=" << tp << endl << "BackupTime=Every " << backuptime << " Minute(s)(Every " << backupms << " ms)" << endl << "Command : " << d1 << endl;
+	string d0 = getCmdStr(opp,tp);
+	cout << "[DEBUG]" << endl << "已读取配置:" << endl << "OutputPath=" << opp << endl << "TargetPath=" << tp << endl << "BackupTime=Every " << backuptime << " Minute(s)(Every " << backupms << " ms)" << endl << "Command : " << d0 << endl;
 	if (opp == "")
 	{
 		opp = "backup\\";
@@ -45,7 +45,7 @@ int main() {
 	while (1) {
 		_PR(0, "Starting Backup. 开始备份");
 		_PR(0, "Starting Compress. 开始压缩");
-		system(StringToChar(getCmdStr()));
+		system(StringToChar(getCmdStr(opp,tp)));
 		_PR(0, "Backup Successful. 备份成功");
 		Sleep(backupms);
 	}

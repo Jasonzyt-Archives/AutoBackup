@@ -52,20 +52,38 @@ int _PR(int PRtype, string text)
     }
     return 0;
 }
-string getCmdStr(string outputdir, string inputdir, string outputfilename)
+
+string getCmdStr()
 {
     ostringstream v2;
-    v2 << "bz.exe c -y -r -fmt:zip \"" << outputdir << outputfilename << "\" " << "\"" << inputdir << "\" ";
+    /*拼合字符串 根据需求修改此部分为7-Zip.exe或bandzip.exe
+    *Bandzip
+        v2 << "[Bandzip目录] c -y -r -fmt:zip \"" << opp << getZIPFilename() << "\" " << "\"" << tp << "\" ";
+    *7-Zip
+        v2 << "[7-Zip目录] a \"" << opp << getZIPFilename() << "\" " << "\"" << tp << "\" -y -r";
+    */
+    /*The splicing string is modified to 7-Zip.exe or bandzip.exe
+    *Bandzip
+        v2 << "[Bandzip Folder] c -y -r -fmt:zip \"" << opp << getZIPFilename() << "\" " << "\"" << tp << "\" ";
+    *7-Zip
+        v2 << "[7-Zip Folder] a \"" << opp << getZIPFilename() << "\" " << "\"" << tp << "\" -y -r";
+    */
+    v2 << "bz.exe c -y -r -fmt:zip \"" << opp << getZIPFilename() << "\" " << "\"" << tp << "\" ";
     string v3 = v2.str();
     return v3;
 }
-
 
 string getConfig(string configfile, string key)
 {
     operate_config conf(configfile);
     string r1=conf.getValue(key);
     return r1;
+}
+
+const char* StringToChar(string inputStr)
+{
+    const char* r114514 = inputStr.c_str();
+    return r114514;
 }
 
 int StringToInt(string str)

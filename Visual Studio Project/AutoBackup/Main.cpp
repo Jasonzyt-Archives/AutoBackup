@@ -14,15 +14,15 @@ int backuptime, backupms;
 
 int main() {
 	SetConsoleTitle(L"自动备份 AutoBackup");
-	cout << "AutoBackup v1.0.3(Release x64) - Autobackup tool. Copyright (C)2020 JasonZYT" << endl;
+	cout << "AutoBackup v1.0.4(Release x64) - Autobackup tool. Copyright (C)2020 JasonZYT" << endl;
+	cout << "GitHub Repository:https://www.github.com/Jasonzyt/AutoBackup" << endl;
 	_PR(0, "Starting...");
 	string opp = getConfig("config.ini", "OutputPath");
 	string tp = getConfig("config.ini", "TargetPath");
 	string bt = getConfig("config.ini", "BackupTime");
 	int backuptime = StringToInt(bt);
 	int backupms = backuptime * 60 * 1000;
-	string d0 = getZIPFilename();
-	string d1 = getCmdStr(tp, opp, d0);
+	string d0 = getCmdStr();
 	cout << "[DEBUG]" << endl << "已读取配置:" << endl << "OutputPath=" << opp << endl << "TargetPath=" << tp << endl << "BackupTime=Every " << backuptime << " Minute(s)(Every " << backupms << " ms)" << endl << "Command : " << d1 << endl;
 	if (opp == "")
 	{
@@ -45,10 +45,7 @@ int main() {
 	while (1) {
 		_PR(0, "Starting Backup. 开始备份");
 		_PR(0, "Starting Compress. 开始压缩");
-		string zipfilename = getZIPFilename();
-		string cmdstr = getCmdStr(tp,opp,zipfilename);
-		const char* c1 = cmdstr.c_str();
-		system(c1);
+		system(StringToChar(getCmdStr()));
 		_PR(0, "Backup Successful. 备份成功");
 		Sleep(backupms);
 	}

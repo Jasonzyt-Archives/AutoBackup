@@ -8,3 +8,7 @@
 /Visual Studio Project/AutoBackup/x64/Debug
 /Visual Studio Project/x64/Debug
 /Visual Studio Project/AutoBackup/x64/Release
+*.iobj
+*.ipdb
+*.pdb
+*.exe

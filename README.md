@@ -15,4 +15,4 @@ NOTE:This software depends on the console application of Bandzip(bz.exe,ark.xxx.
 
 head.h 
 
-[edit.png]:<http://server.skytown.xyz:15434/imgbed/markdown/AutoBackup.README.md.1.png> "Edit.png"
+[edit.png]: <http://server.skytown.xyz:15434/imgbed/markdown/AutoBackup.README.md.1.png> "Edit.png"

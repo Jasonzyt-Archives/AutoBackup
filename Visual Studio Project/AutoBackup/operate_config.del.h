@@ -1,5 +1,6 @@
+/*
 #include <string>
-#define COMMENT_CHAR '#'//注释符
+constexpr auto COMMENT_CHAR = '#';//注释符;
 using namespace std;
 
 class operate_config
@@ -15,3 +16,4 @@ public:
 	//返回值，对应配置项name的value值
 	string getValue(const string& name);
 };
+*/

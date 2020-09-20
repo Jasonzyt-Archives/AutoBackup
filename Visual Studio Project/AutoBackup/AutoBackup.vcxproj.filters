@@ -18,10 +18,13 @@
     <ClInclude Include="resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="operate_config.h">
+    <ClInclude Include="Main.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Main.h">
+    <ClInclude Include="getConfig.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="operate_config.del.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -31,16 +34,22 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\AutoBackup.del\Timer\图标.ico">
-      <Filter>资源文件</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="operate_config.cpp">
+    <ClCompile Include="getConfig.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="operate_config.del.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.h.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon.ico">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>

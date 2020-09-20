@@ -1,5 +1,6 @@
+/*
 #include "Afx.h"
-#include "operate_config.h"
+#include "operate_config.del.h"
 #include <fstream>
 #include <iostream>
 #pragma warning(disable:4267)
@@ -103,3 +104,4 @@ operate_config::operate_config(void)
 {
 }
 
+*/

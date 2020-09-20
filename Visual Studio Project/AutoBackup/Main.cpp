@@ -3,6 +3,7 @@
 #include<stdio.h>
 #include<string>
 #include<Windows.h>
+#include"getConfig.h"
 #include"main.h"
 #pragma warning(disable:6001)
 #pragma warning(disable:6031)
@@ -14,19 +15,33 @@ int backuptime, backupms;
 
 int main() {
 	SetConsoleTitle(L"自动备份 AutoBackup");
-	cout << "AutoBackup v1.0.4(Release x64) - Autobackup tool. Copyright (C)2020 JasonZYT" << endl;
+	cout << "AutoBackup v1.6.6(Release x64) - Autobackup tool. Copyright (C)2020 JasonZYT" << endl;
 	cout << "GitHub Repository:https://www.github.com/Jasonzyt/AutoBackup" << endl;
 	_PR(0, "Starting...");
-	string opp = getConfig("config.ini", "OutputPath");
-	string tp = getConfig("config.ini", "TargetPath");
-	string bt = getConfig("config.ini", "BackupTime");
+	_PR(0, "Reading Config...");
+	string opp = getConfig("config.ini", "OutputPath", "backup\\");
+	string tp = getConfig("config.ini", "TargetPath", "");
+	string bt = getConfig("config.ini", "BackupTime", "60");
+	int debug = StringToInt(getConfig("config.ini", "Debug", "0"));
+	string opfn = getConfig("config.ini", "OutputFilname","%Y-%m-%d %H.zip");
+	if ((findFile("./config.ini")) == false) {
+		_PR(2, "Config Read Fail.");
+		getchar();
+		return 0;
+	}
+	else {
+		_PR(0, "Config Read Success.");
+	}
+	string opf = editZIPFilename(opfn);
 	int backuptime = StringToInt(bt);
 	int backupms = backuptime * 60 * 1000;
-	string d0 = getCmdStr(opp,tp);
-	cout << "[DEBUG]" << endl << "已读取配置:" << endl << "OutputPath=" << opp << endl << "TargetPath=" << tp << endl << "BackupTime=Every " << backuptime << " Minute(s)(Every " << backupms << " ms)" << endl << "Command : " << d0 << endl;
-	if (opp == "")
+	if (debug == 1)
 	{
-		opp = "backup\\";
+		ostringstream op;
+		string d0 = getCmdStr(opp, tp, opf);
+		op << "已读取配置:" << endl << "OutputPath=" << opp << endl << "TargetPath=" << tp << endl << "BackupTime=Every " << backuptime << " Minute(s)(Every " << backupms << " ms)" << endl << "OutputFilename=" << opf << "," << opfn << endl << "Debug=" << debug << endl << "Command : " << d0 << endl;
+		string pr = op.str();
+		_PR(3, pr);
 	}
 	if (tp=="")
 	{
@@ -34,7 +49,7 @@ int main() {
 		getchar();
 		return 0;
 	}
-	if (backuptime > 35791||backuptime<1) 
+	if (backuptime > 35791 || backuptime<1) 
 	{
 		_PR(2, "BackupTime参数不能大于35791分钟或小于1分钟 , 请修改config.ini");
 		getchar();
@@ -45,7 +60,7 @@ int main() {
 	while (1) {
 		_PR(0, "Starting Backup. 开始备份");
 		_PR(0, "Starting Compress. 开始压缩");
-		system(StringToChar(getCmdStr(opp,tp)));
+		system((getCmdStr(opp,tp,opf)).c_str());
 		_PR(0, "Backup Successful. 备份成功");
 		Sleep(backupms);
 	}

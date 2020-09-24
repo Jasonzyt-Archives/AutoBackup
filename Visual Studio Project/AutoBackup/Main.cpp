@@ -4,7 +4,7 @@
 #include<string>
 #include<Windows.h>
 #include"getConfig.h"
-#include"main.h"
+#include"Function.h"
 #pragma warning(disable:6001)
 #pragma warning(disable:6031)
 
@@ -14,8 +14,8 @@ string opp, tp, bt;
 int backuptime, backupms;
 
 int main() {
-	SetConsoleTitle(L"自动备份 AutoBackup");
-	cout << "AutoBackup v1.6.6(Release x64) - Autobackup tool. Copyright (C)2020 JasonZYT" << endl;
+	SetConsoleTitle(L"[NORMAL] 自动备份 AutoBackup");
+	cout << "AutoBackup v1.6.9(Release x64) - Autobackup tool. Copyright (C)2020 JasonZYT" << endl;
 	cout << "GitHub Repository:https://www.github.com/Jasonzyt/AutoBackup" << endl;
 	_PR(0, "Starting...");
 	_PR(0, "Reading Config...");
@@ -25,8 +25,11 @@ int main() {
 	int debug = StringToInt(getConfig("config.ini", "Debug", "0"));
 	string opfn = getConfig("config.ini", "OutputFilname","%Y-%m-%d %H.zip");
 	if ((findFile("./config.ini")) == false) {
-		_PR(2, "Config Read Fail.");
+		SetConsoleTitle(L"[ERROR][F001] 自动备份 AutoBackup");
+		PRErr(0, "F001", "Can't Find Config File:config.ini. 找不到配置文件:config.ini");
+		_PR(2, "Config Read Fail. 读取配置失败");
 		getchar();
+		throw "F001 Can't Find Config File";
 		return 0;
 	}
 	else {
@@ -45,22 +48,28 @@ int main() {
 	}
 	if (tp=="")
 	{
-		_PR(2, "Undefined TargetPath , Please Check config.ini. 未定义的目标文件夹 , 请检查config.ini");
+		SetConsoleTitle(L"[ERROR][F002] 自动备份 AutoBackup");
+		PRErr(0, "F002", "Undefined TargetPath , Please Check config.ini. 未定义的目标文件夹 , 请检查config.ini");
 		getchar();
+		throw "F002 Undefined TargetPath.";
 		return 0;
 	}
 	if (backuptime > 35791 || backuptime<1) 
 	{
-		_PR(2, "BackupTime参数不能大于35791分钟或小于1分钟 , 请修改config.ini");
+		SetConsoleTitle(L"[ERROR][F003] 自动备份 AutoBackup");
+		PRErr(0, "F003", "Data Overflow. BackupTime参数不能大于35791分钟或小于1分钟 , 请修改config.ini");
 		getchar();
+		throw "F003 Data Overflow";
 		return 0;
 	}
 	//!!不要超出35791分钟!!//
 	cout << "已载入配置:" << endl << "OutputPath=" << opp << endl << "TargetPath=" << tp << endl << "BackupTime=Every " << backuptime << " Minute(s)(Every " << backupms << " ms)" << endl;
-	while (1) {
+	while (1) 
+	{
+		string _opfn = editZIPFilename(opfn);
 		_PR(0, "Starting Backup. 开始备份");
 		_PR(0, "Starting Compress. 开始压缩");
-		system((getCmdStr(opp,tp,opf)).c_str());
+		system((getCmdStr(opp,tp,_opfn)).c_str());
 		_PR(0, "Backup Successful. 备份成功");
 		Sleep(backupms);
 	}

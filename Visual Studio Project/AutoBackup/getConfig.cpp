@@ -1,5 +1,5 @@
 #include "getConfig.h" 
-#include "Main.h"
+#include "Function.h"
 
 using namespace std;
 

@@ -140,14 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="getConfig.h" />
-    <ClInclude Include="Main.h" />
+    <ClInclude Include="Function.h" />
     <ClInclude Include="operate_config.del.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="getConfig.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Main.h.cpp" />
+    <ClCompile Include="Function.cpp" />
     <ClCompile Include="operate_config.del.cpp" />
   </ItemGroup>
   <ItemGroup>

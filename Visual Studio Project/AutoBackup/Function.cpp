@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include "operate_config.del.h"
 #include "getConfig.h"
-#include "Main.h"
+#include "Function.h"
 #pragma warning(disable:4996)
 
 using namespace std;
@@ -51,8 +51,21 @@ int _PR(int PRtype, string text)
     }
     else if (PRtype == 3)
     {
-        v1 << "[" << time << " DEBUG]" << text;
+        v1 << "[" << time << " DEBUG] " << text;
         cout << v1.str() << endl;
+    }
+    return 0;
+}
+
+int PRErr(int ErrorType, string ErrorCode, string text)
+{
+    ostringstream v9;
+    string time = getTime();
+    if (ErrorType == 0)
+    {
+        v9 << "[" << time << " ERROR][FATAL][" << ErrorCode << "] " << text;
+        cout << v9.str() << endl;
+        return 1;
     }
     return 0;
 }
@@ -92,12 +105,6 @@ string getConfig(string configfile, string key, string defaultvaule)
     Config conf(configfile);
     string r1 = conf.Read(key, defaultvaule/*Ä¬ÈÏÖµ*/);
     return r1;
-}
-
-const char* StringToChar(string inputStr)
-{
-    const char* r114514 = inputStr.c_str();
-    return r114514;
 }
 
 int StringToInt(string str)

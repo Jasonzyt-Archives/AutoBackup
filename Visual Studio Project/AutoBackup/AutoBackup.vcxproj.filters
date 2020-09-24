@@ -18,13 +18,13 @@
     <ClInclude Include="resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Main.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="getConfig.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="operate_config.del.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Function.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -43,7 +43,7 @@
     <ClCompile Include="operate_config.del.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Main.h.cpp">
+    <ClCompile Include="Function.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
